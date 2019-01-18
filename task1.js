@@ -3,7 +3,7 @@ process.on('message', function (msg) {
   console.log(`[Slave]# starts calculating...`);
   const start = Date.now();
   const result = fibonacci(msg);
-  console.log(`[Slave]# The result of task ${process.pid} is ${result}, taking ${Date.now() - start} ms.`);
+  console.log(`[Slave]# The result of task1 ${process.pid} is ${result}, taking ${Date.now() - start} ms.`);
   process.send({
     key: result,
     extra: 'hidding info',

@@ -9,7 +9,7 @@ if (cluster.isMaster) {
   console.time('main')
   console.log(`[Master]# Master starts running. pid: ${process.pid}`)
   for (let i = 0; i < numCPUs; i++) {
-    slaves[i] = fork('./slave.js')
+    slaves[i] = i < 2 ? fork('./task1.js') : fork('./task2.js');
     slaves[i].send(seqArr[i]);
     slaves[i].on('exit', () => console.log(`Slave ${slaves[i].pid} is dead`));
     slaves[i].on('message', function (message) {
